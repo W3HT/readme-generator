@@ -33,52 +33,56 @@ const questions = [
     {
         type: 'list',
         name: 'licence',
-        choices: ['Mozilla Public License','Boost Software License 1.0','MIT License', 'Apache License 2.0', 'The Unlicense'],
+        choices: ['Mozilla Public License 2.0','Boost Software License 1.0','MIT License', 'Apache License 2.0', 'No License'],
     }
 
 
 ];
-.then((res) => {
-    const textMessage = `
 
-    # ${response.projectTitle}
+init();
+    inquirer
+        .prompt(questions)
+        .then((res) => {
+            const textMessage = `
 
-    ## ${response.description}
-        
+            # ${response.projectTitle}
 
-    ## Table of Contents
-    - [Installation](#installation)
-    - [Usage](#usage)
-    - [Credits](#credits)
-    - [License](#license)
-    
-    ## ${response.installation}
-    
-    ## ${response.usage}
-        
+            ## ${response.description}
+                
 
-    ## ${response.credits}
-    
-    ## LICENSE 
-        
+            ## Table of Contents
+            - [Installation](#installation)
+            - [Usage](#usage)
+            - [Credits](#credits)
+            - [License](#license)
+            
+            ## ${response.installation}
+            
+            ## ${response.usage}
+                
 
-    ## Badges
-    
+            ## ${response.credits}
+            
+            ## LICENSE 
+                
 
-    ## Features
-        
+            ## Badges
+            
 
-    ## How to Contribute
-        
+            ## Features
+                
 
-    ## Tests
-        
-        
-    
-`
-    
+            ## How to Contribute
+                
 
-});
+            ## Tests
+                
+                
+            
+        `
+            
+
+        });
 
 // TODO: Create a function to write README file
         // function writeToFile("README.md", textMessage, err = {
@@ -95,7 +99,7 @@ function generateREADMEFile(input) {
 function init() {}
 
 // Function call to initialize app
-init();
+
 
 
 
@@ -136,10 +140,48 @@ init();
     // ---
     // 🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
 
+
+
+// render license table of contents
+function license(badge) {
+    licenseUrl = (badge === "") ? ` `: `
+    - [License](#license)
+    `
+    return licenseToc
+}
+
+// render license block
+function generateLicenseBlock(data) {
+    licenseBlock =( badge === "") ? ` `: `
+    ## License
+    ${data}
+    `
+    return licenseBlock
+}
 // ## Badges
     // ![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
     // Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
-
+// function to grab badge URL
+function generateBadge() {
+    switch (data) {
+        case data = "Mozilla Pulic License 2.0":
+            badge = "![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)";
+            break;
+        case data = "Boost Software Licence 1.0":
+            badge = "![License](https://img.shields.io/badge/License-Boost%201.0-lightblue.svg)";
+            break;
+        case data = "MIT License":
+            badge = "![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)";
+            break;
+        case data = "Apache License 2.0":
+            badge = "![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)";
+            break;
+        case data = "No License":
+            badge = "";
+            break;
+    }
+}
+        // 'Mozilla Public License','Boost Software License 1.0','MIT License', 'Apache License 2.0', 'The Unlicense'
 // ## Features
     // If your project has a lot of features, list them here.
 
