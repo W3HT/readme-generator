@@ -38,7 +38,7 @@ const questions = [
 
 
 ];
-.then((data) => {
+.then((res) => {
     const textMessage = `
 
     # ${response.projectTitle}
@@ -59,7 +59,7 @@ const questions = [
 
     ## ${response.credits}
     
-    ## ${}
+    ## LICENSE 
         
 
     ## Badges
@@ -81,8 +81,16 @@ const questions = [
 });
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
-
+        // function writeToFile("README.md", textMessage, err = {
+        //     err ? console.log("Big Trouble") : console.log("Generating README.md")
+        // })
+function generateREADMEFile(input) {
+    let readmeTitle;
+    let readmeDescription;
+    const descriptionEl = "## Description";
+    let tableOfContents;
+    const tableOfContentsEl = ""
+}
 // TODO: Create a function to initialize app
 function init() {}
 
