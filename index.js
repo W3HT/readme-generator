@@ -55,7 +55,44 @@ const questions = [
 ];
 
 
+// render license table of contents
+function renderLicense(badge) {
+    licenseUrl = (badge === "") ? ` `: `
+    - [License](#license)
+    `
+    return licenseUrl
+}
 
+// render license block
+function renderLicenseBlock(data) {
+    licenseBlock = ( badge === "") ? ` `: `
+    ## License
+    ${data}
+    `
+    return licenseBlock
+}
+
+// function to grab badge URL
+function generateBadge(license) {
+    switch (license) {
+        case data = "Mozilla Pulic License 2.0":
+            badge = "![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)";
+            break;
+        case data = "Boost Software Licence 1.0":
+            badge = "![License](https://img.shields.io/badge/License-Boost%201.0-lightblue.svg)";
+            break;
+        case data = "MIT License":
+            badge = "![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)";
+            break;
+        case data = "Apache License 2.0":
+            badge = "![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)";
+            break;
+        case data = "No License":
+            badge = "";
+            break;
+    }
+    return badge;
+}
 
 // Function call to initialize app
 
@@ -65,7 +102,7 @@ function renderMD(data){
 
     # ${data.projectTitle}        
     
-    ${badge}
+    ${data.badge}
 
     ## Description
     ${data.description}
@@ -105,45 +142,6 @@ function renderMD(data){
     [Email](${data.email})
         
 `;
-}
-
-// render license table of contents
-function renderLicense(badge) {
-    licenseUrl = (badge === "") ? ` `: `
-    - [License](#license)
-    `
-    return licenseUrl
-}
-
-// render license block
-function renderLicenseBlock(data) {
-    licenseBlock = ( badge === "") ? ` `: `
-    ## License
-    ${data}
-    `
-    return licenseBlock
-}
-
-// function to grab badge URL
-function generateBadge(license) {
-    switch (license) {
-        case data = "Mozilla Pulic License 2.0":
-            badge = "![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)";
-            break;
-        case data = "Boost Software Licence 1.0":
-            badge = "![License](https://img.shields.io/badge/License-Boost%201.0-lightblue.svg)";
-            break;
-        case data = "MIT License":
-            badge = "![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)";
-            break;
-        case data = "Apache License 2.0":
-            badge = "![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)";
-            break;
-        case data = "No License":
-            badge = "";
-            break;
-    }
-    return badge;
 }
 
 // TODO: Create a function to initialize app
