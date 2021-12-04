@@ -28,12 +28,12 @@ const questions = [
     {
         type: 'input',
         name: 'credits',
-        message: 'List your collaborators, if any, with links to their GitHub profiles',
+        message: 'List your collaborators, if any, with links to their GitHub profiles', 
     },
     {
         type: 'list',
         name: 'licence',
-        choices: ['Mozilla Public License 2.0','Boost Software License 1.0','MIT License', 'Apache License 2.0', 'No License'],
+        choices: ['Mozilla Public License 2.0','Boost Software License 1.0','MIT License', 'Apache License 2.0', 'No License'],  // **
     }
 
 
@@ -100,7 +100,10 @@ function init() {}
 
 // Function call to initialize app
 
-
+function renderMD(data){
+    const badge = generateBadge(data.license);
+    const licenseUrl = licenseUrl()
+}
 
 
 
@@ -143,16 +146,16 @@ function init() {}
 
 
 // render license table of contents
-function license(badge) {
+function renderLicense(badge) {
     licenseUrl = (badge === "") ? ` `: `
     - [License](#license)
     `
-    return licenseToc
+    return licenseUrl
 }
 
 // render license block
-function generateLicenseBlock(data) {
-    licenseBlock =( badge === "") ? ` `: `
+function renderLicenseBlock(data) {
+    licenseBlock = ( badge === "") ? ` `: `
     ## License
     ${data}
     `
@@ -182,6 +185,7 @@ function generateBadge() {
     }
 }
         // 'Mozilla Public License','Boost Software License 1.0','MIT License', 'Apache License 2.0', 'The Unlicense'
+
 // ## Features
     // If your project has a lot of features, list them here.
 
