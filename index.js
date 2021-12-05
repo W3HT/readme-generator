@@ -55,37 +55,37 @@ const questions = [
 ];
 
 
-// render license table of contents
-function renderLicense(badge) {
-    licenseUrl = (badge === "") ? ` `: `
-    - [License](#license)
-    `
-    return licenseUrl
-}
+// // render license table of contents
+// function renderLicense() {
+//     licenseUrl = (badge === "") ? ` `: `
+//     - [License](#license)
+//     `
+//     return licenseUrl
+// }
 
-// render license block
-function renderLicenseBlock(data) {
-    licenseBlock = ( badge === "") ? ` `: `
-    ## License
-    ${data}
-    `
-    return licenseBlock
-}
+// // render license block
+// function renderLicenseBlock(license) {
+//     licenseBlock = ( badge === "") ? ` `: `
+//     ## License
+//     ${license}
+//     `
+//     return licenseBlock
+// }
 
 // function to grab badge URL
 function generateBadge(license) {
     switch (license) {
         case data = "Mozilla Pulic License 2.0":
-            badge = "![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)";
+            badge = "[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)";
             break;
         case data = "Boost Software Licence 1.0":
-            badge = "![License](https://img.shields.io/badge/License-Boost%201.0-lightblue.svg)";
+            badge = "[![License](https://img.shields.io/badge/License-Boost%201.0-lightblue.svg)](https://opensource.org/licenses/BSL-1.0)";
             break;
         case data = "MIT License":
-            badge = "![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)";
+            badge = "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
             break;
         case data = "Apache License 2.0":
-            badge = "![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)";
+            badge = "[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)";
             break;
         case data = "No License":
             badge = "";
@@ -97,12 +97,12 @@ function generateBadge(license) {
 // Function call to initialize app
 
 function renderMD(data){
-    
+
     return `
 
     # ${data.projectTitle}        
     
-    ${data.badge}
+    ${generateBadge(data.license)}
 
     ## Description
     ${data.description}
@@ -111,11 +111,10 @@ function renderMD(data){
     ## Table of Contents
     - [Installation](#installation)
     - [Usage](#usage)
-    - [Credits](#credits)
-    - ${licenseUrl}  
     - [Contributions](#contributions)
     - [Tests](#tests)
     - [Questions](#questions)
+    - [License](#license)
     
     ---
     ## Installation
@@ -125,14 +124,14 @@ function renderMD(data){
     ${data.usage}
     
     ## Contributions
-    ${data.contributions}
+    ${data.contribution}
         
     ---
     ## Tests
     ${data.test}
     ---
-
-    ${licenseBlock} 
+    ## License
+    ${data.license} 
 
     ---
 
@@ -145,6 +144,12 @@ function renderMD(data){
 }
 
 // TODO: Create a function to initialize app
+
+function saveMD(fileName, data) {
+    fs.writeFile(fileName, data, (err) =>
+    err ? console.error(err) : console.log ('Save README Success!')
+    );
+}
 
 function init() {
     inquirer
