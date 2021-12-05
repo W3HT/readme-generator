@@ -13,7 +13,7 @@ const questions = [
     {
         type: 'input',
         name: 'description',
-        message: 'Please provide a shor description of your project.',
+        message: 'Please provide a short description of your project.',
     },
     {
         type: 'input',
@@ -51,28 +51,9 @@ const questions = [
         message: 'Please provide your email address.'
     }
 
-
 ];
 
 
-// // render license table of contents
-// function renderLicense() {
-//     licenseUrl = (badge === "") ? ` `: `
-//     - [License](#license)
-//     `
-//     return licenseUrl
-// }
-
-// // render license block
-// function renderLicenseBlock(license) {
-//     licenseBlock = ( badge === "") ? ` `: `
-//     ## License
-//     ${license}
-//     `
-//     return licenseBlock
-// }
-
-// function to grab badge URL
 function generateBadge(license) {
     switch (license) {
         case data = "Mozilla Pulic License 2.0":
@@ -100,45 +81,45 @@ function renderMD(data){
 
     return `
 
-    # ${data.projectTitle}        
+# ${data.projectTitle}        
     
-    ${generateBadge(data.license)}
+${generateBadge(data.license)}
 
-    ## Description
+## Description
     ${data.description}
         
-    --- 
-    ## Table of Contents
-    - [Installation](#installation)
-    - [Usage](#usage)
-    - [Contributions](#contributions)
-    - [Tests](#tests)
-    - [Questions](#questions)
-    - [License](#license)
+--- 
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributions](#contributions)
+- [Tests](#tests)
+- [Questions](#questions)
+- [License](#license)
     
-    ---
-    ## Installation
-    ${data.installation}
-    
-    ## Usage
-    ${data.usage}
-    
-    ## Contributions
-    ${data.contribution}
-        
-    ---
-    ## Tests
-    ${data.test}
-    ---
-    ## License
-    ${data.license} 
+---
+## Installation
+${data.installation}
 
-    ---
+## Usage
+${data.usage}
 
-    ## Questions
-    Conact info:
-    [GithHub](https://github.com/${data.github})
-    [Email](${data.email})
+## Contributions
+${data.contribution}
+    
+---
+## Tests
+${data.test}
+---
+## License
+${data.license} 
+
+---
+
+## Questions
+Conact info:
+[GithHub](https://github.com/${data.github})
+[Email](${data.email})
         
 `;
 }
